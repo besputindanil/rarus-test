@@ -1,0 +1,3 @@
+@function base-unit($num) {
+  @return ($num / $base) * 1rem;
+}
