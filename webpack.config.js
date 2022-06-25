@@ -13,20 +13,21 @@ module.exports = {
     filename: 'index.js',
   },
   devServer: {
+    static: path.join(__dirname, './build'),
     compress: true,
     port: 8080,
+    historyApiFallback: true,
   },
   resolve: {
     alias: {
-      'views': resolve('src/views'),
-      'components': resolve('src/components'),
-      'image': resolve('src/image'),
-      'js': resolve('src/js'),
-      'styles': resolve('src/styles'),
-      'fonts': resolve('src/fonts'),
-      'store': resolve('src/store'),
+      views: resolve('src/views'),
+      components: resolve('src/components'),
+      image: resolve('src/image'),
+      js: resolve('src/js'),
+      styles: resolve('src/styles'),
+      store: resolve('src/store'),
     },
-    extensions: ['.js', '.vue']
+    extensions: ['.js', '.vue'],
   },
   module: {
     rules: [
@@ -47,9 +48,9 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              additionalData: `@import "styles/index.scss";`
-            }
-          }
+              additionalData: `@import "styles/index.scss";`,
+            },
+          },
         ],
       },
       {

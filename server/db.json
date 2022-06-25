@@ -1,0 +1,123 @@
+{
+  "ats": [
+    {
+      "id": 1,
+      "title": "Железная",
+      "list": [
+        {
+          "id": 1.1,
+          "name": "Avaya IP Office"
+        },
+        {
+          "id": 1.2,
+          "name": "Cisco UCM"
+        },
+        {
+          "id": 1.3,
+          "name": "LG iPecs"
+        },
+        {
+          "id": 1.4,
+          "name": "Panasonic KX-TDA/TDE, КX-NS"
+        },
+        {
+          "id": 1.5,
+          "name": "Samsung OfficeServ"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Программная",
+      "list": [
+        {
+          "id": 2.1,
+          "name": "Ascozia"
+        },
+        {
+          "id": 2.2,
+          "name": "Asteriks выше версии 1.6"
+        },
+        {
+          "id": 2.3,
+          "name": "Elastix"
+        },
+        {
+          "id": 2.4,
+          "name": "FreePBX"
+        },
+        {
+          "id": 2.5,
+          "name": "Oktell"
+        },
+        {
+          "id": 2.6,
+          "name": "VoxLink"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Программная",
+      "list": [
+        {
+          "id": 2.1,
+          "name": "Ascozia"
+        },
+        {
+          "id": 2.2,
+          "name": "Asteriks выше версии 1.6"
+        },
+        {
+          "id": 2.3,
+          "name": "Elastix"
+        },
+        {
+          "id": 2.4,
+          "name": "FreePBX"
+        },
+        {
+          "id": 2.5,
+          "name": "Oktell"
+        },
+        {
+          "id": 2.6,
+          "name": "VoxLink"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Программная",
+      "list": [
+        {
+          "id": 2.1,
+          "name": "Ascozia"
+        },
+        {
+          "id": 2.2,
+          "name": "Asteriks выше версии 1.6"
+        },
+        {
+          "id": 2.3,
+          "name": "Elastix"
+        },
+        {
+          "id": 2.4,
+          "name": "FreePBX"
+        },
+        {
+          "id": 2.5,
+          "name": "Oktell"
+        },
+        {
+          "id": 2.6,
+          "name": "VoxLink"
+        }
+      ]
+    }
+  ],
+  "user": {
+    "ats": {}
+  }
+}

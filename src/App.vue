@@ -26,9 +26,10 @@ body {
 }
 
 body {
-  font-family: $font-open-sans;
+  //font-family: $font-open-sans;
+  font-size: base-unit(14);
+  line-height: base-unit(22);
   font-weight: 400;
-  font-size: base-unit(1);
   color: $midnight-express;
 }
 </style>
