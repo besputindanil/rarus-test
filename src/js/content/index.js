@@ -19,8 +19,8 @@ export const INTEGRATION_FEATURES_TITLE = {
 
 export const SETTINGS_INFO_TITLE = {
   MODEL: 'Модель АТС:',
-  PROGRAM: 'Управление нашей фирмой:',
-  SOLUTIONS: 'Интеграция с телефонией:',
+  PROGRAM: 'Программа 1С:',
+  SOLUTIONS: 'Подходящие решения:',
 };
 
 export const INSTRUCTIONS_TITLE = 'Ссылки на инструкции:';

@@ -40,6 +40,14 @@ export default {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: base-unit(32) base-unit(16) base-unit(16);
+  padding: base-unit(25) base-unit(16) base-unit(16);
+
+  @media screen and (max-width: $screen-sm) {
+    padding: base-unit(16);
+  }
+
+  &__button {
+    margin-top: base-unit(32);
+  }
 }
 </style>

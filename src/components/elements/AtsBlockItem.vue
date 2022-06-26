@@ -4,6 +4,8 @@
       'ats-block-item': true,
       'ats-block-item--active': isActive,
       'ats-block-item--disabled': disabled,
+      'ats-block-item--not': noAts,
+      'ats-block-item--last': noAts && disabled,
     }"
     @click="onClick"
   >
@@ -31,6 +33,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    noAts: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     onClick() {
@@ -51,6 +57,10 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s ease;
 
+  &--not {
+    color: $red-orange;
+  }
+
   &:hover {
     background-color: rgba(0, 150, 242, 0.1);
   }
@@ -61,7 +71,6 @@ export default {
 
   &--disabled {
     padding: base-unit(4) base-unit(12);
-    width: fit-content;
     pointer-events: none;
   }
 
@@ -73,6 +82,10 @@ export default {
     height: base-unit(22);
     background-color: $dodger-blue;
     border-radius: 100%;
+  }
+
+  &--last {
+    order: 1;
   }
 }
 </style>

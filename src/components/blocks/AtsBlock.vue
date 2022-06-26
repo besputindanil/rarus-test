@@ -1,12 +1,14 @@
 <template>
   <div class="ats-block">
-    <ats-block-no-item
-      :class="{
-        'ats-block__no-item': true,
-        'ats-block__no-item--popover': isPopover,
-      }"
+    <ats-block-item
+      :is-active="isActive(NO_ATS_TEXT)"
+      class="ats-block__item--not"
       :disabled="isPopover"
-    />
+      no-ats
+      @click="onAtsItemClick(NO_ATS_TEXT)"
+    >
+      {{ isPopover }}{{ NO_ATS_TEXT }}
+    </ats-block-item>
     <template v-for="item in atsData">
       <ats-block-title :key="item.id">
         {{ item.title }}
@@ -32,12 +34,13 @@
 <script>
 import AtsBlockTitle from 'components/elements/AtsBlockTitle';
 import AtsBlockItem from 'components/elements/AtsBlockItem';
-import AtsBlockNoItem from 'components/elements/AtsBlockNoItem';
+import { NO_ATS_TEXT } from 'js/content';
+
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'AtsBlock',
-  components: { AtsBlockTitle, AtsBlockItem, AtsBlockNoItem },
+  components: { AtsBlockTitle, AtsBlockItem },
   props: {
     atsBlock: {
       type: Object,
@@ -49,6 +52,11 @@ export default {
         default: false,
       },
     },
+  },
+  data() {
+    return {
+      NO_ATS_TEXT,
+    };
   },
   computed: {
     ...mapGetters('ats', ['atsData', 'activeAts']),
@@ -67,25 +75,43 @@ export default {
 
 <style lang="scss" scoped>
 .ats-block {
-  width: 25%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  width: 25%;
+  height: 100%;
+  max-height: base-unit(590);
+  padding: 0 base-unit(14);
 
-  &__no-item {
-    margin-bottom: base-unit(10);
+  @media screen and (max-width: $screen-ad) {
+    width: 33%;
+    max-height: base-unit(800);
+  }
 
-    &--popover {
-      order: 1;
-    }
+  @media screen and (max-width: $screen-md) {
+    width: 50%;
+    max-height: base-unit(1200);
+  }
+
+  @media screen and (max-width: $screen-sm) {
+    width: 100%;
+    max-height: 100%;
+    padding: 0;
   }
 
   &__item {
-    margin-right: base-unit(36);
+    margin-right: base-unit(25);
+
+    @media screen and (max-width: $screen-sm) {
+      margin-right: 0;
+    }
+
+    &--not {
+      margin-bottom: base-unit(17);
+    }
 
     &--last {
-      margin-bottom: base-unit(10);
+      margin-bottom: base-unit(15);
     }
   }
 }

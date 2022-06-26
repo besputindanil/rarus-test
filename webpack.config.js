@@ -28,6 +28,7 @@ module.exports = {
       store: resolve('src/store'),
       router: resolve('src/router'),
       data: resolve('src/data'),
+      fonts: resolve('src/fonts'),
     },
     extensions: ['.js', '.vue', '.json'],
   },
@@ -60,12 +61,13 @@ module.exports = {
         use: ['vue-style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg)$/i,
+        test: /\.(png|jpg|woff|woff2|ttf|eot)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
               esModule: false,
+              name: 'fonts/[name].[ext]!static',
             },
           },
         ],

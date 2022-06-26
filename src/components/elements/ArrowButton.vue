@@ -53,7 +53,6 @@ export default {
   align-items: center;
   justify-content: center;
   color: $white;
-  font-size: base-unit(16);
   font-weight: 600;
   border: none;
   outline: none;
@@ -65,12 +64,38 @@ export default {
     opacity: 0.8;
   }
 
+  &__text {
+    padding: 0 base-unit(10);
+    font-size: base-unit(16);
+
+    @media screen and (max-width: $screen-md) {
+      padding: 0 base-unit(5);
+      font-size: base-unit(12);
+    }
+
+    @media screen and (max-width: $screen-sm) {
+      display: none;
+    }
+  }
+
+  &__icon {
+    @media screen and (max-width: $screen-md) {
+      width: base-unit(10);
+    }
+  }
+
   &--block {
     width: 100%;
     min-height: base-unit(48);
     padding: base-unit(12);
     background-color: $malachite;
     border-radius: base-unit(8);
+
+    .arrow-button__text {
+      @media screen and (max-width: $screen-sm) {
+        display: block;
+      }
+    }
   }
 
   &--reverse {
@@ -83,10 +108,6 @@ export default {
   &--disabled {
     pointer-events: none;
     background-color: $hawkes-blue;
-  }
-
-  &__text {
-    padding: 0 base-unit(13);
   }
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <section class="settings-integration">
     <div class="settings-integration__header">
-      <h2 class="settings-integration__title">{{ INTEGRATION_TITLE }}</h2>
+      <settings-title tag="h2" class="settings-integration__title">{{
+        INTEGRATION_TITLE
+      }}</settings-title>
     </div>
     <div class="settings-integration__content">
       <settings-integration-item :integration-features="supportedFeatures" />
@@ -11,13 +13,14 @@
 </template>
 
 <script>
+import SettingsTitle from 'components/elements/SettingsTitle';
 import SettingsIntegrationItem from 'components/elements/SettingsIntegrationItem';
 import { mapGetters } from 'vuex';
 import { INTEGRATION_TITLE } from 'js/content';
 
 export default {
   name: 'SettingsIntegration',
-  components: { SettingsIntegrationItem },
+  components: { SettingsTitle, SettingsIntegrationItem },
   data() {
     return { INTEGRATION_TITLE };
   },
@@ -55,6 +58,11 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: base-unit(20);
+
+    @media screen and (max-width: $screen-md) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 </style>

@@ -38,6 +38,10 @@ export default {
   height: 100%;
   padding: base-unit(24) base-unit(32) base-unit(32);
 
+  @media screen and (max-width: $screen-sm) {
+    padding: base-unit(16);
+  }
+
   &__info {
     margin-bottom: base-unit(26);
   }

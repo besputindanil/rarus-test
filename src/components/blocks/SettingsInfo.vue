@@ -1,5 +1,5 @@
 <template>
-  <section ref="infoContainer" class="settings-info">
+  <section ref="settingsContainer" class="settings-info">
     <div class="settings-info__item">
       <settings-title>{{ SETTINGS_INFO_TITLE.MODEL }}</settings-title>
       <v-popover placement="bottom-start">
@@ -57,17 +57,23 @@ export default {
 <style lang="scss">
 .tooltip {
   z-index: 10000;
+  width: base-unit(1000);
+
   margin-top: base-unit(5);
   margin-left: base-unit(-15);
 
+  @media screen and (max-width: $screen-ad) {
+    width: 90vw;
+  }
+
   .tooltip-inner {
-    width: base-unit(988);
     height: base-unit(630);
     padding: base-unit(24);
     background-color: $white;
     border-radius: base-unit(12);
     box-sizing: border-box;
     filter: drop-shadow(0 base-unit(8) base-unit(40) rgba(14, 38, 100, 0.32));
+    overflow-y: auto;
   }
 
   .tooltip-arrow {
@@ -110,10 +116,19 @@ export default {
     &:not(:last-child) {
       margin-bottom: base-unit(10);
     }
+
+    @media screen and (max-width: $screen-xs) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__description {
     margin-left: base-unit(6);
+
+    @media screen and (max-width: $screen-xs) {
+      margin-left: base-unit(0);
+    }
   }
 }
 </style>

@@ -42,10 +42,14 @@ body {
 }
 
 body {
-  font-family: $font-open-sans, Arial, sans-serif;
+  font-family: $font-open-sans;
   font-size: base-unit(14);
   line-height: base-unit(22);
   font-weight: 400;
   color: $midnight-express;
+
+  @media screen and (max-width: $screen-sm) {
+    font-size: base-unit(12);
+  }
 }
 </style>

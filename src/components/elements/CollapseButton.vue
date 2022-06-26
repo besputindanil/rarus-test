@@ -48,5 +48,9 @@ export default {
       transform: rotate(180deg);
     }
   }
+
+  @media screen and (max-width: $screen-sm) {
+    font-size: base-unit(12);
+  }
 }
 </style>

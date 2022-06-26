@@ -13,7 +13,7 @@ export default {
 <style lang="scss" scoped>
 .ats-block-title {
   padding: 4px 4px 4px 12px;
-  font-family: Verdana, sans-serif;
+  font-family: $font-verdana;
   font-weight: 700;
   font-size: 12px;
   line-height: 18px;

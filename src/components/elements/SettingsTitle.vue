@@ -45,5 +45,9 @@ export default {
   &--red {
     color: $red-orange;
   }
+
+  @media screen and (max-width: $screen-sm) {
+    font-size: base-unit(12);
+  }
 }
 </style>
