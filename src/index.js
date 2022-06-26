@@ -4,6 +4,9 @@ import store from 'store';
 import router from './router';
 
 import './plugins/v-tooltip';
+import loader from 'vue-ui-preloader';
+
+Vue.use(loader);
 
 Vue.use(store);
 Vue.use(router);

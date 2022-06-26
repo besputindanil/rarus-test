@@ -41,9 +41,16 @@ export default {
     SET_ATS_USER_DATA: (state, payload) => (state.atsUserData = payload),
   },
   actions: {
-    getAtsList: async ({ commit }) => {
-      const data = await getResource(GET_ATS_PATH);
-      data && commit('SET_ATS_DATA', data);
+    getAtsList: async ({ commit, rootState }) => {
+      try {
+        rootState.loading = true;
+        const data = await getResource(GET_ATS_PATH);
+        data && commit('SET_ATS_DATA', data);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        rootState.loading = false;
+      }
     },
     setAts: ({ commit }, payload) => {
       commit('SET_ATS', payload);
@@ -51,13 +58,20 @@ export default {
     clearAts: ({ commit }, payload) => {
       commit('CLEAR_ATS', payload);
     },
-    getUserAts: async ({ getters, commit }) => {
+    getUserAts: async ({ getters, commit, rootState }) => {
       if (getters.activeAts) {
-        const model = getters.activeAts;
-        const payload = { model, ...post };
+        try {
+          rootState.loading = true;
+          const model = getters.activeAts;
+          const payload = { model, ...post };
 
-        const data = await postResource(POST_USER_ATS_PATH, payload);
-        data && commit('SET_ATS_USER_DATA', data);
+          const data = await postResource(POST_USER_ATS_PATH, payload);
+          data && commit('SET_ATS_USER_DATA', data);
+        } catch (e) {
+          console.error(e);
+        } finally {
+          rootState.loading = false;
+        }
       }
     },
   },

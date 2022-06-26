@@ -22,8 +22,11 @@ export default {
   computed: {
     ...mapGetters('ats', ['activeAts']),
   },
+  async mounted() {
+    await this.getAtsList();
+  },
   methods: {
-    ...mapActions('ats', ['getUserAts']),
+    ...mapActions('ats', ['getAtsList']),
     async onAcceptButtonClick() {
       this.$router.push({ name: 'ats/2' });
     },

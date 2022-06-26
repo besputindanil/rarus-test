@@ -12,7 +12,6 @@
 <script>
 import TheHeader from 'components/TheHeader';
 import ContentWrapper from 'components/Blocks/ContentWrapper';
-import { mapActions } from 'vuex';
 
 export default {
   name: 'DefaultPage',
@@ -21,12 +20,6 @@ export default {
     return {
       imageStyle: `background-image: url(${require('image/background.jpg')})`,
     };
-  },
-  async mounted() {
-    await this.getAtsList();
-  },
-  methods: {
-    ...mapActions('ats', ['getAtsList']),
   },
 };
 </script>

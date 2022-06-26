@@ -1,12 +1,28 @@
 <template>
   <div class="app">
     <router-view />
+    <loader
+      v-if="loading"
+      object="#0096f2"
+      color1="#ffffff"
+      color2="#f2291f"
+      size="4"
+      speed="2"
+      bg="#1d2335"
+      opacity="80"
+      name="circular"
+    ></loader>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'App',
+  computed: {
+    ...mapGetters(['loading']),
+  },
 };
 </script>
 

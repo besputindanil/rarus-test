@@ -10,23 +10,22 @@
 import SettingsInfo from 'components/blocks/SettingsInfo';
 import SettingsIntegration from 'components/blocks/SettingsIntegration';
 import SettingsFooter from 'components/blocks/SettingsFooter';
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'SettingsPage',
   components: { SettingsInfo, SettingsIntegration, SettingsFooter },
-  mounted() {
-    this.init();
+  computed: {
+    ...mapGetters('ats', ['atsData']),
+  },
+  async mounted() {
+    await this.getUserAts();
+    if (!this.atsData.length) {
+      await this.getAtsList();
+    }
   },
   methods: {
-    ...mapActions('ats', ['getUserAts']),
-    async init() {
-      try {
-        await this.getUserAts();
-      } catch (e) {
-        console.error(e);
-      }
-    },
+    ...mapActions('ats', ['getUserAts', 'getAtsList']),
   },
 };
 </script>
