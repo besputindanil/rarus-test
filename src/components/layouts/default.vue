@@ -15,7 +15,7 @@ import ContentWrapper from 'components/Blocks/ContentWrapper';
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'Page',
+  name: 'DefaultPage',
   components: { TheHeader, ContentWrapper },
   data() {
     return {
