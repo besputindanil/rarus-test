@@ -17,7 +17,6 @@ export default {
   getters: {
     atsData: (state) => state.atsData,
     activeAts: (state) => state.activeAts || localStorage.getItem(LOCAL_STORAGE_SLUG),
-    hasActiveAts: (getters) => !!getters.activeAts,
     atsUserInfo: (state) => {
       const { model, program, solutions } = state.atsUserData;
       return { model, program, solutions };

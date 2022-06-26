@@ -26,6 +26,7 @@ module.exports = {
       js: resolve('src/js'),
       styles: resolve('src/styles'),
       store: resolve('src/store'),
+      router: resolve('src/router'),
       data: resolve('src/data'),
     },
     extensions: ['.js', '.vue', '.json'],
