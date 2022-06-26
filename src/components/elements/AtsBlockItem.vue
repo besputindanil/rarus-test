@@ -1,47 +1,43 @@
 <template>
-  <div :class="{
-    'ats-block-item': true,
-    'ats-block-item--active': isActive
-  }" @click="onClick">
-    <span class="ats-block-item__name">{{ name }}</span>
-    <span v-if="isActive" class="ats-block-item__icon">
+  <div
+    :class="{
+      'ats-block-item': true,
+      'ats-block-item--active': isActive,
+      'ats-block-item--disabled': disabled,
+    }"
+    @click="onClick"
+  >
+    <span class="ats-block-item__name">
+      <slot />
+    </span>
+    <span v-if="isActive && !disabled" class="ats-block-item__icon">
       <check-mark-icon />
     </span>
   </div>
 </template>
 
 <script>
-import CheckMarkIcon from "components/icons/CheckMarkIcon";
-import { mapGetters, mapActions } from "vuex";
+import CheckMarkIcon from 'components/icons/CheckMarkIcon';
 
 export default {
   name: 'AtsBlockItem',
   components: { CheckMarkIcon },
   props: {
-    item: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  computed: {
-    ...mapGetters('ats', ['activeAtsId']),
-    name() {
-      return this.item?.name
+    isActive: {
+      type: Boolean,
+      default: false,
     },
-    id() {
-      return this.item?.id
+    disabled: {
+      type: Boolean,
+      default: false,
     },
-    isActive() {
-      return this.id && this.id  === this.activeAtsId;
-    }
   },
   methods: {
-    ...mapActions('ats', ['setAts','clearAts']),
     onClick() {
-      this.isActive ? this.clearAts() : this.setAts(this.item)
-    }
+      this.$emit('click');
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -61,6 +57,12 @@ export default {
 
   &--active {
     background-color: rgba(0, 150, 242, 0.1);
+  }
+
+  &--disabled {
+    padding: base-unit(4) base-unit(12);
+    width: fit-content;
+    pointer-events: none;
   }
 
   &__icon {

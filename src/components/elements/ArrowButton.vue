@@ -6,8 +6,11 @@
       'arrow-button--reverse': reverse,
       'arrow-button--disabled': disabled,
     }"
+    @click="onCLick"
   >
-    <span class="arrow-button__text">{{ text }}</span>
+    <span class="arrow-button__text">
+      <slot />
+    </span>
     <arrow-icon class="arrow-button__icon" />
   </button>
 </template>
@@ -36,6 +39,11 @@ export default {
       default: false,
     },
   },
+  methods: {
+    onCLick() {
+      this.$emit('click');
+    },
+  },
 };
 </script>
 
@@ -44,7 +52,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   color: $white;
   font-size: base-unit(16);
   font-weight: 600;
@@ -52,13 +59,14 @@ export default {
   outline: none;
   background: transparent;
   cursor: pointer;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 
   &:hover {
     opacity: 0.8;
   }
 
   &--block {
+    width: 100%;
     min-height: base-unit(48);
     padding: base-unit(12);
     background-color: $malachite;

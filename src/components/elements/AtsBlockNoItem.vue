@@ -3,10 +3,11 @@
     :class="{
       'ats-block-no-item': true,
       'ats-block-no-item--active': isActive,
+      'ats-block-no-item--disabled': disabled,
     }"
     @click="onCLick"
   >
-    <span class="ats-block-no-item__name">У меня нет АТС</span>
+    <span class="ats-block-no-item__name">{{ NO_ATS_TEXT }}</span>
     <span v-if="isActive" class="ats-block-no-item__icon">
       <check-mark-icon />
     </span>
@@ -15,21 +16,29 @@
 
 <script>
 import CheckMarkIcon from 'components/icons/CheckMarkIcon';
+import { NO_ATS_TEXT } from 'js/content';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AtsBlockNoItem',
   components: { CheckMarkIcon },
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       isActive: false,
+      NO_ATS_TEXT,
     };
   },
   computed: {
-    ...mapGetters('ats', ['hasActiveAts']),
+    ...mapGetters('ats', ['activeAts']),
   },
   watch: {
-    hasActiveAts(value) {
+    activeAts(value) {
       if (value) {
         this.isActive = false;
       }
@@ -62,6 +71,10 @@ export default {
 
   &--active {
     background-color: rgba(0, 150, 242, 0.1);
+  }
+
+  &--disabled {
+    pointer-events: none;
   }
 
   &__name {

@@ -1,18 +1,13 @@
 <template>
-  <h2 v-if="title" class="ats-block-title">{{ title }}</h2>
+  <h2 class="ats-block-title">
+    <slot />
+  </h2>
 </template>
 
 <script>
-
 export default {
-  name: "AtsBlockTitle",
-  props: {
-    title: {
-      type: String,
-      default: ""
-    }
-  },
-}
+  name: 'AtsBlockTitle',
+};
 </script>
 
 <style lang="scss" scoped>
@@ -22,6 +17,6 @@ export default {
   font-weight: 700;
   font-size: 12px;
   line-height: 18px;
-  color: #0096F2;
+  color: #0096f2;
 }
 </style>

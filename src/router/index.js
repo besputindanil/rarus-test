@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import DefaultLayout from 'components/layouts/default';
 import MainPage from 'views/MainPage';
 import SettingsPage from 'views/SettingsPage';
-import { PAGE_TITLES } from 'js/content';
+import { PAGE_TITLE } from 'js/content';
 
 Vue.use(VueRouter);
 
@@ -11,25 +11,28 @@ const routes = [
   {
     name: 'index',
     path: '/',
-    redirect: { name: 'step' },
+    redirect: { name: 'ats' },
   },
   {
-    name: 'step',
-    path: '/step',
+    name: 'ats',
+    path: '/ats',
     component: DefaultLayout,
-    redirect: { name: 'step/1' },
+    redirect: { name: 'ats/1' },
     children: [
       {
-        name: 'step/1',
+        name: 'ats/1',
         path: '1',
         component: MainPage,
-        meta: { title: PAGE_TITLES.MAIN },
+        meta: { title: PAGE_TITLE.MAIN },
       },
       {
-        name: 'step/2',
+        name: 'ats/2',
         path: '2',
         component: SettingsPage,
-        meta: { title: PAGE_TITLES.SETTINGS },
+        meta: {
+          title: PAGE_TITLE.SETTINGS,
+          backTo: { name: 'ats/1' },
+        },
       },
     ],
   },

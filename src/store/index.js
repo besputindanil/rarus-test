@@ -7,6 +7,6 @@ import ats from 'store/modules/ats';
 
 export default new Vuex.Store({
   modules: {
-    ats
-  }
+    ats,
+  },
 });

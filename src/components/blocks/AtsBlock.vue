@@ -1,16 +1,29 @@
 <template>
   <div class="ats-block">
-    <ats-block-no-item class="ats-block__no-item" />
+    <ats-block-no-item
+      :class="{
+        'ats-block__no-item': true,
+        'ats-block__no-item--popover': isPopover,
+      }"
+      :disabled="isPopover"
+    />
     <template v-for="item in atsData">
-      <ats-block-title :title="item.title" />
+      <ats-block-title :key="item.id">
+        {{ item.title }}
+      </ats-block-title>
       <template v-for="(listItem, i) in item.list">
         <ats-block-item
-          :item="listItem"
+          :key="listItem.id"
+          :is-active="isActive(listItem.name)"
+          :disabled="isPopover"
           :class="{
             'ats-block__item': true,
             'ats-block__item--last': i === item.list.length - 1,
           }"
-        />
+          @click="onAtsItemClick(listItem.name)"
+        >
+          {{ listItem.name }}
+        </ats-block-item>
       </template>
     </template>
   </div>
@@ -20,7 +33,7 @@
 import AtsBlockTitle from 'components/elements/AtsBlockTitle';
 import AtsBlockItem from 'components/elements/AtsBlockItem';
 import AtsBlockNoItem from 'components/elements/AtsBlockNoItem';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'AtsBlock',
@@ -30,14 +43,23 @@ export default {
       type: Object,
       default: () => {},
     },
+    isPopover: {
+      isActive: {
+        type: Boolean,
+        default: false,
+      },
+    },
   },
   computed: {
-    ...mapGetters('ats', ['atsData']),
-    title() {
-      return this.atsBlock?.title;
+    ...mapGetters('ats', ['atsData', 'activeAts']),
+  },
+  methods: {
+    ...mapActions('ats', ['setAts', 'clearAts']),
+    onAtsItemClick(name) {
+      this.isActive(name) ? this.clearAts() : this.setAts(name);
     },
-    list() {
-      return this.atsBlock?.list;
+    isActive(name) {
+      return name && name === this.activeAts;
     },
   },
 };
@@ -53,6 +75,10 @@ export default {
 
   &__no-item {
     margin-bottom: base-unit(10);
+
+    &--popover {
+      order: 1;
+    }
   }
 
   &__item {

@@ -26,7 +26,7 @@ body {
 }
 
 body {
-  //font-family: $font-open-sans;
+  font-family: $font-open-sans, Arial, sans-serif;
   font-size: base-unit(14);
   line-height: base-unit(22);
   font-weight: 400;

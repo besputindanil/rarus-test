@@ -1,32 +1,65 @@
-import { getResource } from "js/api";
+import { getResource, postResource } from 'js/api';
+import { prepareIntegrationData } from 'js/models';
+import post from 'data/post';
+
+const GET_ATS_PATH = 'ats';
+const POST_USER_ATS_PATH = 'ats-user';
+
+const LOCAL_STORAGE_SLUG = 'ats';
 
 export default {
   namespaced: true,
   state: {
     atsData: [],
-    activeAts: null
+    activeAts: null,
+    atsUserData: {},
   },
   getters: {
     atsData: (state) => state.atsData,
-    activeAtsId: (state) => state.activeAts?.id,
-    hasActiveAts: (state) => !!state.activeAts
+    activeAts: (state) => state.activeAts || localStorage.getItem(LOCAL_STORAGE_SLUG),
+    hasActiveAts: (getters) => !!getters.activeAts,
+    atsUserInfo: (state) => {
+      const { model, program, solutions } = state.atsUserData;
+      return { model, program, solutions };
+    },
+    atsUserIntegration: (state) => {
+      const { telephony_integration } = state.atsUserData;
+      const preparedIntegration =
+        telephony_integration && prepareIntegrationData(telephony_integration);
+      return preparedIntegration;
+    },
   },
   mutations: {
-    SET_ATS_DATA: (state, payload) => state.atsData = payload,
-    SET_ATS: (state, payload) => state.activeAts = payload,
-    CLEAR_ATS: (state) => state.activeAts = null,
+    SET_ATS_DATA: (state, payload) => (state.atsData = payload),
+    SET_ATS: (state, payload) => {
+      state.activeAts = payload;
+      localStorage.setItem(LOCAL_STORAGE_SLUG, payload);
+    },
+    CLEAR_ATS: (state) => {
+      state.activeAts = null;
+      localStorage.removeItem(LOCAL_STORAGE_SLUG);
+    },
+    SET_ATS_USER_DATA: (state, payload) => (state.atsUserData = payload),
   },
   actions: {
     getAtsList: async ({ commit }) => {
-      const data = await getResource('ats')
+      const data = await getResource(GET_ATS_PATH);
       data && commit('SET_ATS_DATA', data);
     },
     setAts: ({ commit }, payload) => {
-      commit('SET_ATS', payload)
+      commit('SET_ATS', payload);
     },
     clearAts: ({ commit }, payload) => {
-      commit('CLEAR_ATS', payload)
-    }
-  }
+      commit('CLEAR_ATS', payload);
+    },
+    getUserAts: async ({ getters, commit }) => {
+      if (getters.activeAts) {
+        const model = getters.activeAts;
+        const payload = { model, ...post };
 
+        const data = await postResource(POST_USER_ATS_PATH, payload);
+        data && commit('SET_ATS_USER_DATA', data);
+      }
+    },
+  },
 };

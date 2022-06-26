@@ -55,69 +55,53 @@
           "name": "VoxLink"
         }
       ]
-    },
-    {
-      "id": 3,
-      "title": "Программная",
-      "list": [
-        {
-          "id": 2.1,
-          "name": "Ascozia"
-        },
-        {
-          "id": 2.2,
-          "name": "Asteriks выше версии 1.6"
-        },
-        {
-          "id": 2.3,
-          "name": "Elastix"
-        },
-        {
-          "id": 2.4,
-          "name": "FreePBX"
-        },
-        {
-          "id": 2.5,
-          "name": "Oktell"
-        },
-        {
-          "id": 2.6,
-          "name": "VoxLink"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Программная",
-      "list": [
-        {
-          "id": 2.1,
-          "name": "Ascozia"
-        },
-        {
-          "id": 2.2,
-          "name": "Asteriks выше версии 1.6"
-        },
-        {
-          "id": 2.3,
-          "name": "Elastix"
-        },
-        {
-          "id": 2.4,
-          "name": "FreePBX"
-        },
-        {
-          "id": 2.5,
-          "name": "Oktell"
-        },
-        {
-          "id": 2.6,
-          "name": "VoxLink"
-        }
-      ]
     }
   ],
-  "user": {
-    "ats": {}
+  "ats-user": {
+    "model": "FreePBX",
+    "program": "Управление нашей фирмой",
+    "solutions": "Интеграция с телефонией",
+    "telephony_integration": [
+      {
+        "feature_name": "Получение информации о звонках",
+        "support": true
+      },
+      {
+        "feature_name": "Создать исходящий звонок",
+        "support": true
+      },
+      {
+        "feature_name": "Положить трубку",
+        "support": true
+      },
+      {
+        "feature_name": "Постановка на удержание",
+        "support": true
+      },
+      {
+        "feature_name": "Перевод безусловный",
+        "support": true
+      },
+      {
+        "feature_name": "Перевод условный",
+        "support": true
+      },
+      {
+        "feature_name": "Динамическая маршрутизация командой перевода",
+        "support": true
+      },
+      {
+        "feature_name": "Получение информации о звонках",
+        "support": false
+      },
+      {
+        "feature_name": "Создать исходящий звонок",
+        "support": false
+      },
+      {
+        "feature_name": "Положить трубку",
+        "support": false
+      }
+    ]
   }
 }

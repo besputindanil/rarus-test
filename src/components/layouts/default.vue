@@ -40,11 +40,13 @@ export default {
   width: 100%;
   height: 100vh;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   &__container {
     width: 100%;
-    max-width: base-unit(1110);
-    padding: 0 2vw;
+    max-width: base-unit(1150);
+    padding: 0 base-unit(20);
   }
 
   &__header {
