@@ -1,13 +1,9 @@
 <template>
   <section class="ats">
     <ats-block class="ats__block" />
-    <arrow-button
-      class="ats__button"
-      :text="BUTTONS_TEXT.ACCEPT"
-      block
-      :disabled="!activeAts"
-      @click="onAcceptButtonClick"
-    />
+    <arrow-button class="ats__button" block :disabled="!activeAts" @click="onAcceptButtonClick">
+      {{ BUTTONS_TEXT.ACCEPT }}
+    </arrow-button>
   </section>
 </template>
 
