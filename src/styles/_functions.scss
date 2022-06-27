@@ -1,6 +1,7 @@
+@use "sass:math";
 $base: 16;
 $base-font-size: $base * 1px;
 
 @function base-unit($num) {
-  @return ($num / $base) * 1rem;
+  @return math.div($num, $base) * 1rem;
 }

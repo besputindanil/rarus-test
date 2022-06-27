@@ -61,12 +61,22 @@ module.exports = {
         use: ['vue-style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|woff|woff2|ttf|eot)$/i,
+        test: /\.(png|jpg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
               esModule: false,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
               name: 'fonts/[name].[ext]!static',
             },
           },

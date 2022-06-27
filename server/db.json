@@ -290,7 +290,7 @@
     }
   ],
   "ats-user": {
-    "model": "Avaya IP Office",
+    "model": "Экомобайл",
     "program": "Управление нашей фирмой",
     "solutions": "Интеграция с телефонией",
     "telephony_integration": [
